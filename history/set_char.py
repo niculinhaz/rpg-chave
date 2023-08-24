@@ -9,8 +9,15 @@ from characters import Character, Warrior, Wizard
 
 
 def save_char(pick: Wizard | Warrior):
+    """
+    Saves the created character into the database.
+    Args:
+    :pick: The player character.
+    """
+
     boneco = {
         "nome" : pick.name,
+        "age" : pick.age,
         "gender" : pick.gender,
         "level" : pick.level,
         "xp" : pick.xp,
@@ -25,31 +32,36 @@ def save_char(pick: Wizard | Warrior):
         file.write(json_object)
 
 
-def set_char(type: str, ch: Character):
+def set_char(chosen_class: str, character: Character):
     """
     Set the player as the chosen class.
+    args:
+    :type(str): The chosen class.
+    :character: The information about the character.
     """
-    if type == "guerreiro":
+    if chosen_class == "guerreiro":
         principal = Warrior(
-            ch.name,
-            ch.level,
-            ch.xp,
-            ch.gender,
-            ch.health,
-            ch.mana,
-            ch.strenght,
-            ch.defense
+            character.name,
+            character.age,
+            character.level,
+            character.xp,
+            character.gender,
+            character.health,
+            character.mana,
+            character.strenght,
+            character.defense
         )
-    if type == "mago":
+    if chosen_class == "mago":
         principal = Wizard(
-            ch.name,
-            ch.level,
-            ch.xp,
-            ch.gender,
-            ch.health,
-            ch.mana,
-            ch.strenght,
-            ch.defense
+            character.name,
+            character.age,
+            character.level,
+            character.xp,
+            character.gender,
+            character.health,
+            character.mana,
+            character.strenght,
+            character.defense
         )
     
     return principal
