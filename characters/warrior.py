@@ -10,7 +10,7 @@ class Warrior(Character):
     """
 
     def __init__(self, name, age, level, xp, gender, stats, char_class):
-        super().__init__(name, age, level, xp, gender, stats, char_class)
+       super().__init__(name, age, level, xp, gender, stats, char_class)
 
 
 

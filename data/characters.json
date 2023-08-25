@@ -1,0 +1,14 @@
+{
+    "nome": "Nicholas",
+    "age": 18,
+    "gender": "F",
+    "level": 1,
+    "xp": 0,
+    "stats": {
+        "health": 20,
+        "mana": 5,
+        "strenght": 10,
+        "defense": 15
+    },
+    "class": "Guerreiro"
+}
