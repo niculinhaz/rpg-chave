@@ -2,6 +2,6 @@
 
 """
 
-from .general import Character, Stats
+from .general import Character, Stats, gender_dict
 from .wizard import Wizard, WizardActions
 from .warrior import Warrior, WarriorActions

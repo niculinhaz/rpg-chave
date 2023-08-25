@@ -1,14 +1,14 @@
 {
-    "nome": "gui",
-    "age": 18,
-    "gender": "M",
+    "nome": "teste",
+    "age": 16,
+    "gender": "garoto",
     "level": 1,
     "xp": 0,
     "stats": {
         "health": 20,
-        "mana": 15,
-        "strenght": 5,
-        "defense": 10
+        "mana": 5,
+        "strenght": 10,
+        "defense": 15
     },
-    "class": "Mago"
+    "class": "mage"
 }

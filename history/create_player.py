@@ -2,7 +2,7 @@
 Package containing information about the character creation.
 """
 
-from characters import Character, Stats
+from characters import Character, Stats, gender_dict
 
 from .set_char import save_char, set_char
 
@@ -15,39 +15,34 @@ def define_class(name: str, age: int, gender: str):
     :age(int): The player's age.
     :gender(str): To talk to the player in the right gender.
     """
-    if gender == "garota":
-        player_class = input("\nAgora, escolha a sua classe.\nGuerreira\nMaga\n")
-        if player_class == "guerreira":
-            player = set_char("guerreiro", Character(name, age, 1, 0, "F", Stats(20, 5, 10, 15), char_class="Guerreiro"))
-            save_char(player)
-            print("Parabéns! Agora você é um guerreira e vai conquistar o mundo com sua espada... kkkk")
-            return player
-        if player_class == "maga":
-            player = set_char("mago", Character(name, age, 1, 0, "M", Stats(20, 15, 5, 10), char_class="Mago"))
-            save_char(player)
-            print("Parabéns! Agora você é uma mestra das artes místicas.. nerdkkkkk")
-            return player
-    if gender == "garoto":
-        player_class = input("\nAgora, escolha a sua classe.\nGuerreiro\nMago\n")
+    
+    while True:
+        player_class = input(f"\nAgora, escolha a sua classe.\n{gender_dict[gender]['warrior'].capitalize()}\n{gender_dict[gender]['mage'].capitalize()}\n")
         player_class = player_class.lower()
-        if player_class == "guerreiro":
-            player = set_char("guerreiro", Character(name, age, 1, 0, "F", Stats(20, 5, 10, 15), char_class= "Guerreiro"))
+
+        gendered_classes = list(gender_dict[gender].values())
+        base_classes = list(gender_dict[gender].keys())
+
+        if player_class in gendered_classes:
+
+            clean_class = base_classes[gendered_classes.index(player_class)]
+
+            player = set_char(Character(name, age, 1, 0, gender, Stats(20, 5, 10, 15), char_class=clean_class))
             save_char(player)
-            print("Parabéns! Agora você é um guerreiro e vai conquistar o mundo com sua espada... kkkk")
+            if player.char_class == "mage":
+                print(f"Parabéns! Agora você é um {gender_dict[gender]['mage'].capitalize()} das artes místicas.. nerdkkkkk")
+            elif player.char_class == "warrior":
+                print(f"Parabéns! Agora você é um {gender_dict[gender]['warrior'].capitalize()} e vai conquistar o mundo com sua espada... kkkk")
             return player
-        if player_class == "mago":
-            player = set_char("mago", Character(name, age, 1, 0, "M", Stats(20, 15, 5, 10), char_class= "Mago"))
-            save_char(player)
-            print("Parabéns! Agora você é um mestre das artes místicas.. nerdkkkkk")
-            return player
+        else:
+            print("Essa classe não existe!")
+
 
 def create_player():
     """
     Asks the player how their character is going to be.
     """
-    loop_control = True
-    resposta = ""
-    while loop_control:
+    while True:
         nome = input("Primeiro, me conte seu nome.\n")
         genero = input(f"Agora, {nome}, me diga, você é um garoto ou uma garota?\n")
         genero = genero.lower()
@@ -56,8 +51,10 @@ def create_player():
         resposta = resposta.lower()
         if resposta == "sim":
             player = define_class(nome, idade, genero)
-            loop_control = False
             return player
-        if resposta == "nao" or resposta == "não":
+        elif resposta == "nao" or resposta == "não":
             print("Então vamos começar de novo.")
+            continue
+        else:
+            print("Por favor, responda apenas com 'sim' ou 'não'!")
             continue
