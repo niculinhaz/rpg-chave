@@ -10,4 +10,5 @@ def menu():
     print("\t\t BEM VINDO!\n")
     print("\tEsse é o fantástico mundo da Oakley!\n")
     input("\tPressione Enter para continuar.")
-    create_player()
+    player = create_player()
+    return player

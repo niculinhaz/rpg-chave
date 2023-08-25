@@ -1,8 +1,17 @@
 """
 For general info about the characters.
 """
-
 from dataclasses import dataclass
+
+
+
+@dataclass
+class Stats:
+    health: int
+    mana: int
+    strenght: int
+    defense: int
+
 
 @dataclass
 class Character:
@@ -10,9 +19,6 @@ class Character:
     age: int
     level: int
     xp: float
-    gender: int
-    health: int
-    mana: int
-    strenght: int
-    defense: int
-    
+    gender: str
+    stats: Stats
+    char_class: str

@@ -3,7 +3,7 @@ Package containing information about the character creation.
 """
 from emoji import emojize
 
-from characters import Character
+from characters import Character, Stats
 
 from .set_char import save_char, set_char
 
@@ -19,12 +19,12 @@ def define_class(name: str, age: int, gender: str):
     if gender == "garota":
         player_class = input(emojize("\nAgora, escolha a sua classe.\nGuerreira :crossed_swords:\nMaga :fire:\n"))
         if player_class == "guerreira":
-            player = set_char("guerreiro", Character(name, age, 1, 0, "F", 20, 5, 10, 15))
+            player = set_char("guerreiro", Character(name, age, 1, 0, "F", Stats(20, 5, 10, 15), char_class="Guerreiro"))
             save_char(player)
             print("Parabéns! Agora você é um guerreira e vai conquistar o mundo com sua espada... kkkk")
             return player
         if player_class == "maga":
-            player = set_char("mago", Character(name, age, 1, 0, "F", 20, 15, 5, 10))
+            player = set_char("mago", Character(name, age, 1, 0, "M", Stats(20, 15, 5, 10), char_class="Mago"))
             save_char(player)
             print("Parabéns! Agora você é uma mestra das artes místicas.. nerdkkkkk")
             return player
@@ -32,12 +32,12 @@ def define_class(name: str, age: int, gender: str):
         player_class = input(emojize("\nAgora, escolha a sua classe.\nGuerreiro :crossed_swords:\nMago :fire:\n"))    
         player_class = player_class.lower()
         if player_class == "guerreiro":
-            player = set_char("guerreiro", Character(name, age, 1, 0, "M", 20, 5, 10, 15))
+            player = set_char("guerreiro", Character(name, age, 1, 0, "F", Stats(20, 5, 10, 15), char_class= "Guerreiro"))
             save_char(player)
             print("Parabéns! Agora você é um guerreiro e vai conquistar o mundo com sua espada... kkkk")
             return player
         if player_class == "mago":
-            player = set_char("mago", Character(name, age, 1, 0, "M", 20, 15, 5, 10))
+            player = set_char("mago", Character(name, age, 1, 0, "M", Stats(20, 15, 5, 10), char_class= "Mago"))
             save_char(player)
             print("Parabéns! Agora você é um mestre das artes místicas.. nerdkkkkk")
             return player

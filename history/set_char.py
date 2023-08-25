@@ -5,7 +5,7 @@
 import json
 
 
-from characters import Character, Warrior, Wizard
+from characters import Character, Stats, Warrior, Wizard
 
 
 def save_char(pick: Wizard | Warrior):
@@ -21,10 +21,13 @@ def save_char(pick: Wizard | Warrior):
         "gender" : pick.gender,
         "level" : pick.level,
         "xp" : pick.xp,
-        "health" : pick.health,
-        "strenght" : pick.strenght,
-        "mana" : pick.mana,
-        "defense" : pick.defense,
+        "stats" : {
+            "health" : pick.stats.health,
+            "mana" : pick.stats.mana,
+            "strenght": pick.stats.strenght,
+            "defense": pick.stats.defense,
+        },
+        "class" : pick.char_class
     }
 
     json_object = json.dumps(boneco, indent= 4)
@@ -40,28 +43,34 @@ def set_char(chosen_class: str, character: Character):
     :character: The information about the character.
     """
     if chosen_class == "guerreiro":
-        principal = Warrior(
+        main_player = Warrior(
             character.name,
             character.age,
             character.level,
             character.xp,
             character.gender,
-            character.health,
-            character.mana,
-            character.strenght,
-            character.defense
+            Stats(
+            character.stats.health,
+            character.stats.mana,
+            character.stats.strenght,
+            character.stats.defense
+            ),
+            character.char_class
         )
     if chosen_class == "mago":
-        principal = Wizard(
-            character.name,
-            character.age,
-            character.level,
-            character.xp,
-            character.gender,
-            character.health,
-            character.mana,
-            character.strenght,
-            character.defense
-        )
-    
-    return principal
+        main_player = Wizard(
+        character.name,
+        character.age,
+        character.level,
+        character.xp,
+        character.gender,
+        Stats(
+        character.stats.health,
+        character.stats.mana,
+        character.stats.strenght,
+        character.stats.defense
+        ),
+        character.char_class
+    )
+        
+    return main_player

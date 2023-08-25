@@ -8,7 +8,15 @@ class Wizard(Character):
     """
     Class for Wizard data.
     """
-
+    character = Character
+    super().__init__(character.name,
+                     character.age,
+                     character.level,
+                     character.xp,
+                     character.gender,
+                     character.stats,
+                     character.char_class
+                )
 
 
 class WizardActions:
@@ -17,19 +25,19 @@ class WizardActions:
     """
 
     def __init__(self):
-        self.wizard = Wizard()
+        self.wizard = Wizard
     
 
-    def basic_attack(target: Character):
-        target.health = target.health - self.wizard.strenght
+    def basic_attack(self, target: Character):
+        target.health = target.health - self.wizard.stats.strenght
         return target.health
 
 
-    def magic_attack(target: Character):
-        target.health = target.health - (self.wizard.level * self.wizard.strenght / 2)
-        self.wizard.mana = self.wizard.mana - (0.6 * self.wizard.mana)
+    def magic_attack(self, target: Character):
+        target.health = target.health - (self.wizard.level * self.wizard.stats.strenght / 2)
+        self.wizard.mana = self.wizard.stats.mana - (0.6 * self.wizard.stats.mana)
         return target.health
     
-    def cure(target: Character):
+    def cure(self, target: Character):
         target.health = target.health + (target.health * 0.5)
         return target.health
