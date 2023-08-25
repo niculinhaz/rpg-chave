@@ -9,15 +9,8 @@ class Warrior(Character):
     Class for Warrior data.
     """
 
-    character = Character
-    super().__init__(character.name,
-                     character.age,
-                     character.level,
-                     character.xp,
-                     character.gender,
-                     character.stats,
-                     character.char_class
-                )
+    def __init__(self, name, age, level, xp, gender, stats, char_class):
+        super().__init__(name, age, level, xp, gender, stats, char_class)
 
 
 
