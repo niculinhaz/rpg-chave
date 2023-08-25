@@ -16,7 +16,7 @@ def save_char(pick: Wizard | Warrior):
     """
 
     boneco = {
-        "nome" : pick.name,
+        "name" : pick.name,
         "age" : pick.age,
         "gender" : pick.gender,
         "level" : pick.level,
