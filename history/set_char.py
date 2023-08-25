@@ -24,7 +24,7 @@ def save_char(pick: Wizard | Warrior):
         "stats" : {
             "health" : pick.stats.health,
             "mana" : pick.stats.mana,
-            "strenght": pick.stats.strenght,
+            "strength": pick.stats.strength,
             "defense": pick.stats.defense,
         },
         "class" : pick.char_class
@@ -35,14 +35,16 @@ def save_char(pick: Wizard | Warrior):
         file.write(json_object)
 
 
-def set_char(chosen_class: str, character: Character):
+def set_char(character: Character):
     """
     Set the player as the chosen class.
     args:
     :type(str): The chosen class.
     :character: The information about the character.
     """
-    if chosen_class == "guerreiro":
+
+
+    if character.char_class == "warrior":
         main_player = Warrior(
             character.name,
             character.age,
@@ -52,12 +54,12 @@ def set_char(chosen_class: str, character: Character):
             Stats(
             character.stats.health,
             character.stats.mana,
-            character.stats.strenght,
+            character.stats.strength,
             character.stats.defense
             ),
             character.char_class
         )
-    if chosen_class == "mago":
+    if character.char_class == "mage":
         main_player = Wizard(
         character.name,
         character.age,
@@ -67,7 +69,7 @@ def set_char(chosen_class: str, character: Character):
         Stats(
         character.stats.health,
         character.stats.mana,
-        character.stats.strenght,
+        character.stats.strength,
         character.stats.defense
         ),
         character.char_class

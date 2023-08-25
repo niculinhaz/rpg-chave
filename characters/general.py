@@ -5,11 +5,27 @@ from dataclasses import dataclass
 
 
 
+gender_dict = { # Relates gendered nouns to classes
+    "garota": {
+        "warrior": "guerreira",
+        "mage": "maga",
+        "master": "mestra"
+    },
+
+    "garoto": {
+        "warrior": "guerreiro",
+        "mage": "mago",
+        "master": "mestre"
+    }
+}
+
+
+
 @dataclass
 class Stats:
     health: int
     mana: int
-    strenght: int
+    strength: int
     defense: int
 
 
