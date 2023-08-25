@@ -4,7 +4,7 @@
 
 import json
 
-from characters import Character
+from characters import Warrior, Wizard
 
 def load_player():
     """
@@ -15,4 +15,11 @@ def load_player():
         player_info = json.load(file)
     
     return player_info
+
+def setup_player(player_info: dict):
+    """
+    
+    """
+
+    if player_info[
  
