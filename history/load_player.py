@@ -13,7 +13,7 @@ def setup_player(player_info: dict):
 
     data = player_info
 
-    if data["class"] == "guerreiro":
+    if data["class"] == "Guerreiro":
         main_player = Warrior(
             data["name"],
             data["age"],
@@ -24,7 +24,7 @@ def setup_player(player_info: dict):
             data["class"]
         )
         return main_player
-    if data["class"] == "mago":
+    if data["class"] == "Mago":
         main_player = Wizard(
             data["name"],
             data["age"],
@@ -44,9 +44,11 @@ def load_player():
     """
 
     with open("data/characters.json", "r", encoding="utf-8") as file:
-        player_info = json.load(file)
-        if player_info is None:
-            return None
+        try:
+            player_info = json.load(file)
         
-    setup_player(player_info)
-    return player_info
+            player_info = setup_player(player_info)
+            return player_info
+
+        except json.decoder.JSONDecodeError:
+            return None

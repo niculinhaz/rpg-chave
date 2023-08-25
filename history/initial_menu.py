@@ -12,9 +12,9 @@ def menu():
     print("\tEsse é o fantástico mundo da Oakley!\n")
     input("\tPressione Enter para continuar.")
     player = load_player()
-    if load_player() is None:
+    if player is None:
         player = create_player()
         return player
-
-    print("Jogador carregado!")
-    input("Pressione enter para continuar.")       
+    
+    print(f"Jogador {player.name}, de nível {player.level} carregado!")
+    input("Pressione enter para continuar.")
