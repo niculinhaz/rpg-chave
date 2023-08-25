@@ -22,3 +22,21 @@ class Character:
     gender: str
     stats: Stats
     char_class: str
+
+    def __init__(
+            self, 
+            name,
+            age,
+            level,
+            xp,
+            gender,
+            stats,
+            char_class
+        ):
+        self.name = name
+        self.age = age
+        self.level = level
+        self.xp = xp
+        self.gender = gender
+        self.stats = stats
+        self.char_class = char_class

@@ -1,7 +1,6 @@
 """
 Package containing information about the character creation.
 """
-from emoji import emojize
 
 from characters import Character, Stats
 
@@ -17,7 +16,7 @@ def define_class(name: str, age: int, gender: str):
     :gender(str): To talk to the player in the right gender.
     """
     if gender == "garota":
-        player_class = input(emojize("\nAgora, escolha a sua classe.\nGuerreira :crossed_swords:\nMaga :fire:\n"))
+        player_class = input("\nAgora, escolha a sua classe.\nGuerreira\nMaga\n")
         if player_class == "guerreira":
             player = set_char("guerreiro", Character(name, age, 1, 0, "F", Stats(20, 5, 10, 15), char_class="Guerreiro"))
             save_char(player)
@@ -29,7 +28,7 @@ def define_class(name: str, age: int, gender: str):
             print("Parabéns! Agora você é uma mestra das artes místicas.. nerdkkkkk")
             return player
     if gender == "garoto":
-        player_class = input(emojize("\nAgora, escolha a sua classe.\nGuerreiro :crossed_swords:\nMago :fire:\n"))    
+        player_class = input("\nAgora, escolha a sua classe.\nGuerreiro\nMago\n")
         player_class = player_class.lower()
         if player_class == "guerreiro":
             player = set_char("guerreiro", Character(name, age, 1, 0, "F", Stats(20, 5, 10, 15), char_class= "Guerreiro"))
