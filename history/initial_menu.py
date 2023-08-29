@@ -2,7 +2,7 @@
 # from emoji import emojize
 
 from .create_player import create_player
-from .load_player import load_player
+from data import load_player
 
 def menu():
     """

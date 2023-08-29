@@ -30,7 +30,7 @@ def save_char(pick: Wizard | Warrior):
         "class" : pick.char_class
     }
 
-    json_object = json.dumps(boneco, indent= 4)
+    json_object = json.dumps(boneco, indent=4)
     with open("data/characters.json", "w", encoding= "UTF-8") as file:
         file.write(json_object)
 
@@ -42,7 +42,6 @@ def set_char(character: Character):
     :type(str): The chosen class.
     :character: The information about the character.
     """
-
 
     if character.char_class == "warrior":
         main_player = Warrior(
@@ -61,18 +60,18 @@ def set_char(character: Character):
         )
     if character.char_class == "mage":
         main_player = Wizard(
-        character.name,
-        character.age,
-        character.level,
-        character.xp,
-        character.gender,
-        Stats(
-        character.stats.health,
-        character.stats.mana,
-        character.stats.strength,
-        character.stats.defense
-        ),
-        character.char_class
-    )
+            character.name,
+            character.age,
+            character.level,
+            character.xp,
+            character.gender,
+            Stats(
+            character.stats.health,
+            character.stats.mana,
+            character.stats.strength,
+            character.stats.defense
+            ),
+            character.char_class
+        )
         
     return main_player
