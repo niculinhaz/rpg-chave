@@ -9,8 +9,8 @@ class Wizard(Character):
     Class for Wizard data.
     """
 
-    def __init__(self, name, age, level, xp, gender, stats, char_class):
-        super().__init__(name, age, level, xp, gender, stats, char_class)
+    def __init__(self, name, age, level, xp, gender, stats, char_class, race):
+        super().__init__(name, age, level, xp, gender, stats, char_class, race)
 
 
 class WizardActions:

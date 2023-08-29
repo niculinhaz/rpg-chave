@@ -21,7 +21,8 @@ def setup_player(player_info: dict):
             data["xp"],
             data["gender"],
             data["stats"],
-            data["class"]
+            data["class"],
+            data["race"]
         )
         return main_player
     if data["class"] == "mage":
@@ -32,7 +33,8 @@ def setup_player(player_info: dict):
             data["xp"],
             data["gender"],
             data["stats"],
-            data["class"]
+            data["class"],
+            data["race"]
         )
         return main_player
 

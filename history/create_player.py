@@ -17,25 +17,34 @@ def define_class(name: str, age: int, gender: str):
     """
     
     while True:
-        player_class = input(f"\nAgora, escolha a sua classe.\n{gender_dict[gender]['warrior'].capitalize()}\n{gender_dict[gender]['mage'].capitalize()}\n")
-        player_class = player_class.lower()
+        player_race = input(f"Por favor, diga agora de que raça deseja ser.\n{gender_dict[gender]['human'].capitalize()}\n{gender_dict[gender]['elf'].capitalize()}\n")
+        player_race = player_race.lower()
 
         gendered_classes = list(gender_dict[gender].values())
         base_classes = list(gender_dict[gender].keys())
+        
+        player_class = input(f"\nAgora, escolha a sua classe.\n{gender_dict[gender]['warrior'].capitalize()}\n{gender_dict[gender]['mage'].capitalize()}\n")
+        player_class = player_class.lower()
 
-        if player_class in gendered_classes:
+        if player_race in gendered_classes:
+            if player_class in gendered_classes:
 
-            clean_class = base_classes[gendered_classes.index(player_class)]
+                clean_class = base_classes[gendered_classes.index(player_class)]
+                clean_race = base_classes[gendered_classes.index(player_race)]
 
-            player = set_char(Character(name, age, 1, 0, gender, Stats(20, 5, 10, 15), char_class=clean_class))
-            save_char(player)
-            if player.char_class == "mage":
-                print(f"Parabéns! Agora você é um {gender_dict[gender]['mage'].capitalize()} das artes místicas.. nerdkkkkk")
-            elif player.char_class == "warrior":
-                print(f"Parabéns! Agora você é um {gender_dict[gender]['warrior'].capitalize()} e vai conquistar o mundo com sua espada... kkkk")
-            return player
-        else:
+                if clean_class == "mage":
+                    player = set_char(Character(name, age, 1, 0, gender, Stats(20, 15, 5, 15), clean_class, clean_race))
+                    save_char(player)
+                    print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['master'].capitalize()} das artes místicas.. nerdkkkkk")
+                elif clean_class == "warrior":
+                    player = set_char(Character(name, age, 1, 0, gender, Stats(20, 5, 15, 10), clean_class, clean_race))
+                    save_char(player)
+                    print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['warrior'].capitalize()} e vai conquistar o mundo com sua espada... kkkk")
+                return player
+            
             print("Essa classe não existe!")
+        else:
+            print("Essa raça não existe!")
 
 
 def create_player():

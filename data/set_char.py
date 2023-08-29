@@ -27,7 +27,8 @@ def save_char(pick: Wizard | Warrior):
             "strength": pick.stats.strength,
             "defense": pick.stats.defense,
         },
-        "class" : pick.char_class
+        "class" : pick.char_class,
+        "race" : pick.race
     }
 
     json_object = json.dumps(boneco, indent=4)
@@ -56,7 +57,8 @@ def set_char(character: Character):
             character.stats.strength,
             character.stats.defense
             ),
-            character.char_class
+            character.char_class,
+            character.race
         )
     if character.char_class == "mage":
         main_player = Wizard(
@@ -71,7 +73,8 @@ def set_char(character: Character):
             character.stats.strength,
             character.stats.defense
             ),
-            character.char_class
+            character.char_class,
+            character.race
         )
         
     return main_player

@@ -9,13 +9,17 @@ gender_dict = { # Relates gendered nouns to classes
     "garota": {
         "warrior": "guerreira",
         "mage": "maga",
-        "master": "mestra"
+        "master": "mestra",
+        "human": "humana",
+        "elf": "elfa"
     },
 
     "garoto": {
         "warrior": "guerreiro",
         "mage": "mago",
-        "master": "mestre"
+        "master": "mestre",
+        "human": "humano",
+        "elf": "elfo"
     }
 }
 
@@ -38,6 +42,7 @@ class Character:
     gender: str
     stats: Stats
     char_class: str
+    race: str
 
     def __init__(
             self, 
@@ -47,7 +52,8 @@ class Character:
             xp,
             gender,
             stats,
-            char_class
+            char_class,
+            race
         ):
         self.name = name
         self.age = age
@@ -56,3 +62,4 @@ class Character:
         self.gender = gender
         self.stats = stats
         self.char_class = char_class
+        self.race = race
