@@ -4,7 +4,7 @@ Package containing information about the character creation.
 
 from characters import Character, Stats, gender_dict
 
-from .set_char import save_char, set_char
+from data import save_char, set_char
 
 def define_class(name: str, age: int, gender: str):
     """
