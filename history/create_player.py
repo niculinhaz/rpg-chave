@@ -15,36 +15,43 @@ def define_class(name: str, age: int, gender: str):
     :age(int): The player's age.
     :gender(str): To talk to the player in the right gender.
     """
+
+    gendered_nouns = list(gender_dict[gender].values())
+    ungendered_nouns = list(gender_dict[gender].keys())
     
     while True:
         player_race = input(f"Por favor, diga agora de que raça deseja ser.\n{gender_dict[gender]['human'].capitalize()}\n{gender_dict[gender]['elf'].capitalize()}\n")
         player_race = player_race.lower()
 
-        gendered_classes = list(gender_dict[gender].values())
-        base_classes = list(gender_dict[gender].keys())
-        
+        if player_race not in gendered_nouns:
+            print("Essa raça não existe!")
+            continue
+        else:
+            break
+    
+
+    while True:
         player_class = input(f"\nAgora, escolha a sua classe.\n{gender_dict[gender]['warrior'].capitalize()}\n{gender_dict[gender]['mage'].capitalize()}\n")
         player_class = player_class.lower()
 
-        if player_race in gendered_classes:
-            if player_class in gendered_classes:
-
-                clean_class = base_classes[gendered_classes.index(player_class)]
-                clean_race = base_classes[gendered_classes.index(player_race)]
-
-                if clean_class == "mage":
-                    player = set_char(Character(name, age, 1, 0, gender, Stats(20, 15, 5, 15), clean_class, clean_race))
-                    save_char(player)
-                    print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['master'].capitalize()} das artes místicas.. nerdkkkkk")
-                elif clean_class == "warrior":
-                    player = set_char(Character(name, age, 1, 0, gender, Stats(20, 5, 15, 10), clean_class, clean_race))
-                    save_char(player)
-                    print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['warrior'].capitalize()} e vai conquistar o mundo com sua espada... kkkk")
-                return player
-            
+        if player_class not in gendered_nouns:
             print("Essa classe não existe!")
+            continue
         else:
-            print("Essa raça não existe!")
+            break
+
+    clean_class = ungendered_nouns[gendered_nouns.index(player_class)]
+    clean_race = ungendered_nouns[gendered_nouns.index(player_race)]
+    
+    if clean_class == "mage":
+        player = set_char(Character(name, age, 1, 0, gender, Stats(20, 15, 5, 15), clean_class, clean_race))
+        save_char(player)
+        print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['master'].capitalize()} das artes místicas.. nerdkkkkk")
+    elif clean_class == "warrior":
+        player = set_char(Character(name, age, 1, 0, gender, Stats(20, 5, 15, 10), clean_class, clean_race))
+        save_char(player)
+        print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['warrior'].capitalize()} e vai conquistar o mundo com sua espada... kkkk")
+    return player
 
 
 def create_player():

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 
 
-gender_dict = { # Relates gendered nouns to classes
+gender_dict = { # Relates gendered nouns to classes and races
     "garota": {
         "warrior": "guerreira",
         "mage": "maga",
