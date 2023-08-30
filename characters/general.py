@@ -20,6 +20,14 @@ gender_dict = { # Relates gendered nouns to classes
         "master": "mestre",
         "human": "humano",
         "elf": "elfo"
+    },
+    
+    "garote": {
+        "warrior": "guerreire",
+        "mage": "mague",
+        "master": "mestre",
+        "human": "humane",
+        "elf": "elfe"
     }
 }
 
