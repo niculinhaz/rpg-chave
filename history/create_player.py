@@ -53,10 +53,29 @@ def create_player():
     """
     while True:
         nome = input("Primeiro, me conte seu nome.\n")
-        genero = input(f"Agora, {nome}, me diga, você é um garoto ou uma garota?\n")
+        genderAccept = 0;
+        
+        while(genderAccept == 0):
+            genderInput = input(f"Agora, {nome}, me diga, qual o seu gênero?\n 1 - Garoto\n 2 - Garota\n 3 - Garote\n")            
+            match(genderInput):
+                case '1':
+                    genero = "garoto";
+                    genderAccept = 1;
+                    break;
+                case '2':
+                    genero = "garota";
+                    genderAccept = 1;
+                    break;
+                case '3':
+                    genero = "garote";
+                    genderAccept = 1;
+                    break;
+                case _:
+                    print("Selecione uma opção válida, por favor.")
+
         genero = genero.lower()
         idade = int(input("E quantos anos você tem?\n"))
-        resposta = input(f"Então seu nome é {nome}, você tem {idade} anos e é um/uma {genero}? Responda com sim ou não.\n")
+        resposta = input(f"Então seu nome é {nome}, você tem {idade} anos e é {genero}? Responda com sim ou não.\n")
         resposta = resposta.lower()
         if resposta == "sim":
             player = define_class(nome, idade, genero)
