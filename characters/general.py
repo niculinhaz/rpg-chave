@@ -35,10 +35,14 @@ gender_dict = { # Relates gendered nouns to classes and races
 
 @dataclass
 class Stats:
-    health: int
-    mana: int
-    strength: int
-    defense: int
+    max_health: int
+    current_health: int
+    max_mana: int
+    current_mana: int
+    max_strength: int
+    current_strength: int
+    max_defense: int
+    current_defense: int
 
 
 @dataclass
