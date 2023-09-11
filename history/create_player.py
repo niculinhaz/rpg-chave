@@ -44,11 +44,11 @@ def define_class(name: str, age: int, gender: str):
     clean_race = ungendered_nouns[gendered_nouns.index(player_race)]
     
     if clean_class == "mage":
-        player = set_char(Character(name, age, 1, 0, gender, Stats(20, 15, 5, 15), clean_class, clean_race))
+        player = set_char(Character(name, age, 1, 0, gender, Stats(100, 20, 100, 15, 100, 5, 100, 15), clean_class, clean_race, weapon="sword"))
         save_char(player)
         print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['master'].capitalize()} das artes místicas.. nerdkkkkk")
     elif clean_class == "warrior":
-        player = set_char(Character(name, age, 1, 0, gender, Stats(20, 5, 15, 10), clean_class, clean_race))
+        player = set_char(Character(name, age, 1, 0, gender, Stats(100, 20, 100, 5, 100, 15, 100, 10), clean_class, clean_race, weapon="magic book"))
         save_char(player)
         print(f"Parabéns! Agora você é um(a) {gender_dict[gender]['warrior'].capitalize()} e vai conquistar o mundo com sua espada... kkkk")
     return player
@@ -60,28 +60,34 @@ def create_player():
     """
     while True:
         nome = input("Primeiro, me conte seu nome.\n")
-        genderAccept = 0;
+        genderAccept = 0
         
         while(genderAccept == 0):
-            genderInput = input(f"Agora, {nome}, me diga, qual o seu gênero?\n 1 - Garoto\n 2 - Garota\n 3 - Garote\n")            
+            genderInput = input(f"Agora, {nome}, me diga, qual o seu gênero?\n 1 - Garoto\n 2 - Garota\n 3 - Garote\n")
             match(genderInput):
                 case '1':
-                    genero = "garoto";
-                    genderAccept = 1;
-                    break;
+                    genero = "garoto"
+                    genderAccept = 1
+                    break
                 case '2':
-                    genero = "garota";
-                    genderAccept = 1;
-                    break;
+                    genero = "garota"
+                    genderAccept = 1
+                    break
                 case '3':
-                    genero = "garote";
-                    genderAccept = 1;
-                    break;
+                    genero = "garote"
+                    genderAccept = 1
+                    break
                 case _:
                     print("Selecione uma opção válida, por favor.")
 
         genero = genero.lower()
-        idade = int(input("E quantos anos você tem?\n"))
+        AgeAccept = 0
+        while(AgeAccept != 1):
+            idade = input("E quantos anos você tem?\n")
+            if not idade.isnumeric():
+                print("Por favor, insira um valor numérico.")
+                continue
+            AgeAccept = 1
         resposta = input(f"Então seu nome é {nome}, você tem {idade} anos e é {genero}? Responda com sim ou não.\n")
         resposta = resposta.lower()
         if resposta == "sim":

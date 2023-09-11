@@ -16,5 +16,12 @@ def menu():
         player = create_player()
         return player
     
-    print(f"Jogador {player.name}, de nível {player.level} carregado!")
-    input("Pressione enter para continuar.")
+    if player.gender == "garoto":
+        print(f"Jogador {player.name.capitalize()}, de nível {player.level}, carregado!")
+        input("Pressione enter para continuar.")
+    if player.gender == "garota":
+        print(f"Jogadora {player.name.capitalize()}, de nível {player.level}, carregada!")
+        input("Pressione enter para continuar.")
+    if player.gender == "garote":
+        print(f"Jogadore {player.name.capitalize()}, de nível {player.level}, carregade!")
+        input("Pressione enter para continuar.")

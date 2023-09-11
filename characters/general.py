@@ -2,7 +2,7 @@
 For general info about the characters.
 """
 from dataclasses import dataclass
-
+from .weapons import Weapon
 
 
 gender_dict = { # Relates gendered nouns to classes and races
@@ -55,6 +55,7 @@ class Character:
     stats: Stats
     char_class: str
     race: str
+    weapon: Weapon
 
     def __init__(
             self, 
@@ -65,7 +66,8 @@ class Character:
             gender,
             stats,
             char_class,
-            race
+            race,
+            weapon
         ):
         self.name = name
         self.age = age
@@ -75,3 +77,4 @@ class Character:
         self.stats = stats
         self.char_class = char_class
         self.race = race
+        self.weapon = weapon

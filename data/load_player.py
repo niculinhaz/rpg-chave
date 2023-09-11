@@ -22,7 +22,8 @@ def setup_player(player_info: dict):
             data["gender"],
             data["stats"],
             data["class"],
-            data["race"]
+            data["race"],
+            data["weapon"]
         )
         return main_player
     if data["class"] == "mage":
@@ -34,7 +35,8 @@ def setup_player(player_info: dict):
             data["gender"],
             data["stats"],
             data["class"],
-            data["race"]
+            data["race"],
+            data["weapon"]
         )
         return main_player
 
